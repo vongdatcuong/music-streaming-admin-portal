@@ -1,0 +1,84 @@
+.headerPanel {
+  align-items: center;
+  background: var(--primary-color) !important;
+  display: flex;
+  padding: 0 22px 0 0 !important;
+}
+
+.rightContainer {
+  margin-left: auto;
+}
+
+.user {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  color: var(--primary-color);
+  cursor: pointer;
+  height: 32px;
+  line-height: 32px;
+  overflow: hidden;
+  text-align: center;
+  width: 32px;
+}
+
+.userInfoWrapper {
+  align-items: center;
+  display: flex;
+}
+
+.avatar {
+  background-color: var(--primary-color);
+  color: #fff;
+  margin-right: 12px;
+}
+
+.username {
+  text-transform: capitalize;
+}
+
+.email {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.logout {
+  padding-left: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent;
+  }
+}
+
+.logo {
+  align-items: center;
+  background-color: #2673dd;
+  color: white;
+  display: flex;
+  font-size: 18px;
+  height: 32px;
+  margin: 16px 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  font-size: 33px;
+  margin-right: 12px;
+}
+
+.logoContainer {
+  align-items: center;
+  background-color: #2673dd;
+  display: flex;
+  flex-direction: row;
+}
+
+.collapse {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 12px;
+}

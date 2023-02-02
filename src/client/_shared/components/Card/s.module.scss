@@ -1,0 +1,26 @@
+.pageCard {
+  &:global(.ant-card) {
+    margin: var(--spacing-base);
+    padding: var(--spacing-base);
+  }
+
+  :global(.ant-card-head),
+  :global(.ant-card-head-title),
+  :global(.ant-card-extra),
+  :global(.ant-card-body) {
+    padding: 0;
+  }
+
+  :global(.ant-card-head) {
+    border: none;
+    min-height: '40px';
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+  }
+}

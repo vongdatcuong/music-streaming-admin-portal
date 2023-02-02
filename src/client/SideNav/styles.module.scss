@@ -1,0 +1,16 @@
+.link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu {
+  height: calc(100vh - var(--antd-header-height));
+  overflow-x: hidden;
+}
+
+.sider {
+  background-color: #fff;
+  height: 100%;
+  max-width: none !important;
+  width: 100% !important;
+}

@@ -1,0 +1,74 @@
+{
+  "name": "music-streaming-admin-portal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "eslint": "eslint --ext .ts --ext .tsx src",
+    "stylelint": "stylelint --fix \"./src/**/*.{css,scss}\""
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "antd": "^5.0.3",
+    "axios": "^1.2.1",
+    "classnames": "^2.3.2",
+    "constate": "^3.3.2",
+    "json-bigint": "^1.0.0",
+    "lodash": "^4.17.21",
+    "moment-timezone": "^0.5.39",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.4.4",
+    "react-router-dom": "^6.4.4"
+  },
+  "devDependencies": {
+    "@types/json-bigint": "^1.0.1",
+    "@types/lodash": "^4.14.191",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-router": "^5.1.19",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vitejs/plugin-react": "^2.2.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "husky": "^8.0.2",
+    "prettier": "^2.8.0",
+    "sass": "^1.56.1",
+    "stylelint": "^14.15.0",
+    "stylelint-config-standard": "^29.0.0",
+    "stylelint-scss": "^4.3.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,json,md,scss}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,scss,sass}": [
+      "stylelint --fix"
+    ]
+  }
+}
