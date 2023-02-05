@@ -9,29 +9,33 @@ import {
 } from '@ant-design/icons';
 import { Avatar, Button, Dropdown, Layout, Menu, Spin } from 'antd';
 
+import { useUser } from '../_shared/hooks/useUser';
+import { removeTokenUser } from '../_shared/utils/auth';
+import { redirectToLoginPage } from '../_shared/utils/index';
+
 import styles from './styles.module.scss';
 
 const Header: React.FC = () => {
   const [collapsed, setCollapsed] = React.useState(false);
-  const [userInfo, setUserInfo] = React.useState({
-    username: 'cuong.vongdat',
-    email: 'cuong.vd@gmail.com',
-    picture: 'cuong.vd',
-  });
+  const { user } = useUser();
 
   const handleLogout = () => {
-    console.log('log out');
+    removeTokenUser();
+    redirectToLoginPage();
   };
+
+  const userName = user?.firstName + ' ' + user?.lastName;
+  const userAvatar = 'emptyForNow';
 
   const UserInfoWrapper = (
     <Menu>
       <Menu.Item className={styles.userInfoWrapper}>
-        <Avatar className={styles.avatar} src={userInfo.picture}>
-          {userInfo.username}
+        <Avatar className={styles.avatar} src={userAvatar}>
+          {userName}
         </Avatar>
         <div>
-          <div className={styles.username}>{userInfo.username}</div>
-          <div className={styles.email}>{userInfo.email}</div>
+          <div className={styles.username}>{userName}</div>
+          <div className={styles.email}>{user?.email}</div>
         </div>
       </Menu.Item>
       <Menu.Divider />
@@ -59,9 +63,9 @@ const Header: React.FC = () => {
       </div>
       <div className={styles.rightContainer}>
         <Dropdown overlay={UserInfoWrapper} trigger={['click']}>
-          <Avatar src={userInfo.picture} className={styles.user}>
+          <Avatar src={userAvatar} className={styles.user}>
             <Spin spinning={false} indicator={<LoadingOutlined />} />
-            {userInfo.username}
+            {userName}
           </Avatar>
         </Dropdown>
       </div>

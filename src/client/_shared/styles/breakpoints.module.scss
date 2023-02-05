@@ -1,0 +1,13 @@
+@import './variables';
+
+@mixin breakpoint($point) {
+  @if $point == sm {
+    @media (max-width: $sm-breakpoint-max) {
+      @content;
+    }
+  } @else if $point == md {
+    @media (max-width: $md-breakpoint-max) {
+      @content;
+    }
+  }
+}

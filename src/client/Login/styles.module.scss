@@ -1,0 +1,65 @@
+@import 'src/client/_shared/styles/variables';
+@import 'src/client/_shared/styles/container.module';
+@import 'src/client/_shared/styles/breakpoints.module';
+
+.container {
+  @include container;
+  position: relative;
+  text-align: center;
+
+  img {
+    width: 45%;
+  }
+
+  .title {
+    font-size: $font-size-medium;
+  }
+}
+
+.noPermContainer {
+  position: absolute;
+  z-index: 1;
+}
+
+.formContainer {
+  @include container(30%, 40px 30px 20px 30px, 5px);
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px 0 rgba(#000000, 0.14),
+    0 7px 10px -5px rgba(#000000, 0.4);
+  left: 35%;
+  margin: 8% auto;
+  min-height: 320px;
+  opacity: 0.96;
+  position: absolute;
+  z-index: 2;
+}
+
+// md
+@include breakpoint(md) {
+  .formContainer {
+    left: 28%;
+    margin: 5% auto;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    width: 330px;
+  }
+
+  .title {
+    padding-top: 50px;
+  }
+}
+
+// sm
+@include breakpoint(sm) {
+  .formContainer {
+    left: 22%;
+    margin: 5% auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 300px;
+  }
+
+  .title {
+    padding-top: 130px;
+  }
+}

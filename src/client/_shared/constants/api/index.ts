@@ -1,3 +1,4 @@
+import { AuthAPI } from './auth';
 import { GenreAPI } from './genre';
 import { PermissionAPI } from './permission';
 import { SongAPI } from './song';
@@ -8,6 +9,7 @@ export const EndPoint = {
   PermissionAPI,
   UserAPI,
   GenreAPI,
+  AuthAPI,
 };
 
 export default EndPoint;

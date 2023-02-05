@@ -2,6 +2,9 @@ import { message } from 'antd';
 import axios, { AxiosError, AxiosRequestConfig, Method } from 'axios';
 import JSONBigInt from 'json-bigint';
 
+import { getToken } from './auth';
+import { redirectToLoginPage } from '.';
+
 interface Params<T> {
   url: string;
   method?: Method;
@@ -25,13 +28,6 @@ const safeParseJson = (stringToParse: string) => {
   }
 };
 
-const redirectToLoginPage = (loginUrl: string) => {
-  const url = new URL(loginUrl);
-  const searchParams = new URLSearchParams(url.search);
-  searchParams.set('next', location.href);
-  location.href = `${url.origin + url.pathname}?${searchParams.toString()}`;
-};
-
 /**
  * Handler for network errors with HTTP code 401, 403, 404 or 500.
  */
@@ -44,16 +40,10 @@ const errorHandler = (error: AxiosError) => {
       );
       break;
     case 401: {
-      const loginUrl =
-        //@ts-ignore TODO TODO TODO
-        error.response?.data.result || error.response?.data.LOGIN_URL;
-
-      if (!loginUrl) {
-        return message.error(
-          `[${status}] You are currently unauthorized. Please log in.`
-        );
-      }
-      redirectToLoginPage(loginUrl);
+      message.error(
+        `[${status}] You are currently unauthorized. Please log in.`
+      );
+      redirectToLoginPage();
       break;
     }
     case 403:
@@ -82,7 +72,6 @@ const instance = axios.create({
   headers: {
     // default use JSON
     'Content-Type': 'application/json;charset=UTF-8',
-    Authorization: 'Bearer',
   },
   // transformResponse copied from this article:
   // https://itstalwar15.medium.com/handling-bigint-in-axios-using-json-big-in-javascript-d915ae85ffc0
@@ -110,7 +99,13 @@ const instance = axios.create({
 
 // Request interceptors
 instance.interceptors.request.use(
-  (config) => config,
+  (config) => {
+    const token = getToken();
+    if (token && config.headers) {
+      config.headers.Authorization = 'Bearer ' + token;
+    }
+    return config;
+  },
   (error) => Promise.reject(error)
 );
 

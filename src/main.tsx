@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Routes from './client/_shared/constants/routes';
 import Page404 from './client/404';
 import App from './client/AppWrapper';
+import Login from './client/Login';
 import PermissionList from './client/PermissionList';
 import SongList from './client/SongList';
 import UserList from './client/UserList';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: Routes.USER.USERS,
         element: <UserList />,
+      },
+      {
+        path: Routes.AUTH.LOGIN,
+        element: <Login />,
       },
     ],
   },
